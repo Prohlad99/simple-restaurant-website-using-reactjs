@@ -2,11 +2,13 @@ import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="h-[100vh]">
       <Helmet>
         <title>Bistro | Dashboard</title>
       </Helmet>
-      <h1>This is dashboard</h1>
+      <div className="flex justify-center items-center h-full">
+        <h1 className="text-2xl font-semibold">This is dashboard</h1>
+      </div>
     </div>
   );
 }

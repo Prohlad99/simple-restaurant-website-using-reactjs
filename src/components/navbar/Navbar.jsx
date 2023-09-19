@@ -2,13 +2,19 @@ import { useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { VscChromeClose } from 'react-icons/vsc';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const[isMenuOpen, setIsMenuOpen] = useState(false);
+    const {cart} = useSelector(state => state.cart)
     const handleMenu =()=>{
         setIsMenuOpen(!isMenuOpen);
     }
+    let cartItems = 0;
+    cart.forEach(item => {
+        cartItems = cartItems + item.quantity
+    });
   return (
     <div>
       {/* container  */}
@@ -53,7 +59,7 @@ const Navbar = () => {
                     <div className='flex items-center relative h-[20px] w-[20px] '>
                         <Link to="/cart">
                             <span className='text-xl'><BsCart3/></span>
-                            <span className='absolute -top-4 -right-4 text-sm w-[20px] h-[20px] rounded-full bg-blue-600 text-center'>01</span>
+                            <span className='absolute -top-4 -right-4 text-sm w-[20px] h-[20px] rounded-full bg-blue-600 text-center'>{cartItems?cartItems:"00"}</span>
                         </Link>
                     </div>
                 </li>

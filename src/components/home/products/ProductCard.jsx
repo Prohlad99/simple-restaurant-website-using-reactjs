@@ -1,6 +1,9 @@
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../features/cart/cartSlice';
 import './style.css';
 
 const ProductCard = (product) => {
+    const dispatch = useDispatch();
     const{name, image, recipe} = product.product
   return (
     <div>
@@ -20,6 +23,7 @@ const ProductCard = (product) => {
         {/* button  */}
         <div>
           <button
+            onClick={()=>dispatch(addToCart(product.product))}
             className="text-[#BB8506] border-b-2 border-[#BB8506] rounded-lg uppercase bg-[#E8E8E8]
           px-4 py-2 hover:bg-[#1F2937] ease-in-out duration-300"
           >

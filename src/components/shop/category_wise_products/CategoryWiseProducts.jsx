@@ -1,22 +1,27 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProductCard from './../../home/products/ProductCard';
+import ProductCard from "./../../home/products/ProductCard";
 
 const CategoryWiseProducts = () => {
-    const categoryName = useParams();
-    const [category, setCategory] = useState(categoryName.category);
-    const[products, setProducts] = useState([]);
-    const handleCategory=(val)=>{
-        setCategory("");
-        setCategory(val);
-    }
-    useEffect(()=>{
-        fetch("../../../../public/menu.json")
-        .then(res => res.json())
-        .then(data => setProducts(category?data.filter(product => product.category === category):data))
-    },[category, categoryName])
+  const categoryName = useParams();
+  const [category, setCategory] = useState(categoryName.category);
+  const [products, setProducts] = useState([]);
+  const handleCategory = (val) => {
+    setCategory("");
+    setCategory(val);
+  };
+  useEffect(() => {
+    fetch("/menu.json")
+      .then((res) => res.json())
+      .then((data) =>
+        setProducts(
+          category
+            ? data.filter((product) => product.category === category)
+            : data
+        )
+      );
+  }, [category, categoryName]);
 
-    console.log(category)
   return (
     <div>
       {/* container */}
@@ -89,6 +94,6 @@ const CategoryWiseProducts = () => {
       </div>
     </div>
   );
-}
+};
 
-export default CategoryWiseProducts
+export default CategoryWiseProducts;
