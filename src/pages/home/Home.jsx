@@ -17,9 +17,9 @@ const Home = () => {
       </Helmet>
       <HeroCarousel />
       <MenuHeader title="From 11:00am to 10:00pm" subtitle="ORDER ONLINE" />
-      <Zoom>
+      <Fade top>
         <ItemSlider />
-      </Zoom>
+      </Fade>
       <Flip left>
         <BistroBanner />
       </Flip>
